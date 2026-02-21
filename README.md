@@ -77,4 +77,21 @@ tests/
 
 ## License
 
-TBD
+Scoremoro is source-available under the **[PolyForm Noncommercial License 1.0.0](LICENSE)**.
+
+- You may **use, modify, and share** the code for any noncommercial purpose.
+- **Commercial use or resale** requires a separate commercial license.
+- Contact **hello@timdyson.com** for commercial licensing inquiries.
+- See [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md) for full details.
+
+This is **not** OSI-approved open source. The PolyForm Noncommercial license restricts commercial use, which means it does not meet the Open Source Definition.
+
+## Contributing
+
+Pull requests, bug reports, and improvements are welcome. By submitting a contribution you agree that your work will be licensed under the same PolyForm Noncommercial 1.0.0 terms as the rest of the project.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for branch conventions, commit style, and code standards.
+
+## Attribution
+
+Copyright 2026 Tim Dyson. See [NOTICE.md](NOTICE.md) for project notices.
