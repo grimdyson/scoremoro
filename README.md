@@ -4,6 +4,8 @@ A desktop Pomodoro timer that runs as an always-on-top Picture-in-Picture window
 
 **Status:** Pre-development. Scaffolding and documentation phase.
 
+![](./src/ui/assets/splash.png)
+
 ## Tech Stack
 
 - **Shell:** Tauri v2
