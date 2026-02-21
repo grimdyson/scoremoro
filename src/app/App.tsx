@@ -396,10 +396,10 @@ export function App(): ReactNode {
             onToggleMute={handleMute}
             showEdit
             onEdit={handleClose}
+            finishTime={finishTime}
+            finishTimeAccent="work"
           >
             <RunningWorkScreen
-              currentTime={currentTime}
-              finishTime={finishTime}
               remainingMs={state.remainingMs}
               elapsedMs={elapsedMs}
               workMinutes={state.workMinutes}
@@ -422,10 +422,10 @@ export function App(): ReactNode {
             onToggleMute={handleMute}
             showEdit
             onEdit={handleClose}
+            finishTime={finishTime}
+            finishTimeAccent="work"
           >
             <WorkFinishedScreen
-              currentTime={currentTime}
-              finishTime={finishTime}
               elapsedMs={elapsedMs}
               workMinutes={state.workMinutes}
               totalDurationMs={state.totalDurationMs}
@@ -451,10 +451,10 @@ export function App(): ReactNode {
             onToggleMute={handleMute}
             showEdit
             onEdit={handleClose}
+            finishTime={finishTime}
+            finishTimeAccent="break"
           >
             <RunningBreakScreen
-              currentTime={currentTime}
-              finishTime={finishTime}
               remainingMs={state.remainingMs}
               elapsedMs={elapsedMs}
               breakMinutes={state.breakMinutes}
@@ -477,10 +477,10 @@ export function App(): ReactNode {
             onToggleMute={handleMute}
             showEdit
             onEdit={handleClose}
+            finishTime={finishTime}
+            finishTimeAccent="break"
           >
             <BreakFinishedScreen
-              currentTime={currentTime}
-              finishTime={finishTime}
               elapsedMs={elapsedMs}
               breakMinutes={state.breakMinutes}
               totalDurationMs={state.totalDurationMs}

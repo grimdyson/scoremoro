@@ -104,10 +104,25 @@
 }
 
 .info-cluster__score-count {
+  display: flex;
+  align-items: baseline;
+  color: var(--color-white);
+}
+
+.info-cluster__score-slash {
   color: var(--color-white);
 }
 
 .info-cluster__score-count--perfect {
+  color: var(--color-score-perfect);
+}
+
+.info-cluster__score-count--perfect .info-cluster__score-slash {
+  color: var(--color-score-perfect);
+}
+
+/* Numerator stays green when streak was perfect before current segment */
+.info-cluster__numerator--green {
   color: var(--color-score-perfect);
 }
 

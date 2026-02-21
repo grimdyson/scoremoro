@@ -3,9 +3,11 @@ import type { ReactNode } from 'react';
 import './InfoCluster.css';
 
 interface InfoClusterProps {
-  currentTime: string;
-  finishTime: string;
+  currentTime?: string;
+  finishTime?: string;
   accent: AccentMode;
+  /** Show the current/finish time column (default true, false on timer screens) */
+  showTimes?: boolean;
   /** Show the coloured divider bar (only on idle/selection screen) */
   showDivider?: boolean;
   /** Score data for the header score column */
@@ -20,6 +22,7 @@ export function InfoCluster({
   currentTime,
   finishTime,
   accent,
+  showTimes = true,
   showDivider = false,
   completedWork = 0,
   completedBreaks = 0,
@@ -31,24 +34,32 @@ export function InfoCluster({
   const workPerfect = startedWork > 0 && completedWork === startedWork;
   const breakPerfect = startedBreaks > 0 && completedBreaks === startedBreaks;
 
+  // Numerator stays green when the score was perfect before the current segment
+  const workNumeratorGreen =
+    !workPerfect && completedWork > 0 && completedWork === startedWork - 1;
+  const breakNumeratorGreen =
+    !breakPerfect && completedBreaks > 0 && completedBreaks === startedBreaks - 1;
+
   const accentClass = accent === 'break' ? ' info-cluster--break-accent' : '';
 
   const scoresClass = showScores ? ' info-cluster--has-scores' : '';
 
   return (
     <div className={`info-cluster${accentClass}${scoresClass}`}>
-      <div className="info-cluster__times">
-        <div className="info-cluster__row">
-          <span className="info-cluster__time-value">{currentTime}</span>
-          <span className="info-cluster__time-label">Current</span>
+      {showTimes && (
+        <div className="info-cluster__times">
+          <div className="info-cluster__row">
+            <span className="info-cluster__time-value">{currentTime}</span>
+            <span className="info-cluster__time-label">Current</span>
+          </div>
+          <div className="info-cluster__row">
+            <span className={`info-cluster__time-value info-cluster__time-value--accent-${accent}`}>
+              {finishTime}
+            </span>
+            <span className="info-cluster__time-label">Finish</span>
+          </div>
         </div>
-        <div className="info-cluster__row">
-          <span className={`info-cluster__time-value info-cluster__time-value--accent-${accent}`}>
-            {finishTime}
-          </span>
-          <span className="info-cluster__time-label">Finish</span>
-        </div>
-      </div>
+      )}
 
       {showDivider && <div className={`info-cluster__divider info-cluster__divider--${accent}`} />}
 
@@ -58,7 +69,11 @@ export function InfoCluster({
             <span
               className={`info-cluster__score-count${workPerfect ? ' info-cluster__score-count--perfect' : ''}`}
             >
-              {completedWork}/{startedWork}
+              <span className={workNumeratorGreen ? 'info-cluster__numerator--green' : ''}>
+                {completedWork}
+              </span>
+              <span className="info-cluster__score-slash">/</span>
+              <span>{startedWork}</span>
             </span>
             <span className="info-cluster__score-label info-cluster__score-label--work">Work</span>
           </div>
@@ -66,7 +81,11 @@ export function InfoCluster({
             <span
               className={`info-cluster__score-count${breakPerfect ? ' info-cluster__score-count--perfect' : ''}`}
             >
-              {completedBreaks}/{startedBreaks}
+              <span className={breakNumeratorGreen ? 'info-cluster__numerator--green' : ''}>
+                {completedBreaks}
+              </span>
+              <span className="info-cluster__score-slash">/</span>
+              <span>{startedBreaks}</span>
             </span>
             <span className="info-cluster__score-label info-cluster__score-label--break">
               Break

@@ -22,7 +22,7 @@
 
   /* ---- Typography ---- */
   --font-mono: "JetBrains Mono", monospace;
-  --font-display: "Azeret Mono", monospace;
+  --font-display: "Space Mono", monospace;
 
   --text-label: 0.75rem; /* 12px at scale 1 */
   --text-time-lg: 2.75rem; /* 44px at scale 1 */

@@ -2,22 +2,19 @@
 
 A desktop Pomodoro timer that runs as an always-on-top Picture-in-Picture window. Scoremoro adds light gamification through a subtle session scoreboard, rewarding completed work and break cycles to help you build consistency without distracting from the task. Built with a clean, minimal UI and designed to stay pinned while you work.
 
-**Status:** Pre-development. Scaffolding and documentation phase.
-
 ![](./src/ui/assets/splash.png)
 
 ## Tech Stack
 
-- **Shell:** Tauri v2
+- **Shell:** Electron
 - **UI:** React + TypeScript
-- **Build:** Vite
+- **Build:** Vite + electron-builder
 - **Lint/Format:** Biome
 - **Tests:** Vitest
 
 ## Prerequisites
 
 - Node.js 20+
-- Rust toolchain — [rustup.rs](https://rustup.rs/)
 - pnpm
 
 ```sh
@@ -28,33 +25,34 @@ corepack prepare pnpm@latest --activate
 ## Setup
 
 ```sh
-git clone https://github.com/grimdyson/Pomme-VScode.git
-cd Pomme-VScode
+git clone https://github.com/grimdyson/Scoremoro.git
+cd Scoremoro
 pnpm install
 ```
 
 ## Development
 
 ```sh
-pnpm tauri dev        # Launch dev window with hot reload
+pnpm dev              # Start Vite dev server (UI only)
+pnpm dev:electron     # Build and launch Electron window
 ```
 
 ## Build
 
 ```sh
-pnpm tauri build      # Produce release binary + installer
+pnpm dist             # Produce release binary via electron-builder
 ```
 
 ## Commands
 
 | Command | Description |
 |---|---|
-| `pnpm dev` | Start Vite dev server (UI only, no Tauri shell) |
-| `pnpm tauri dev` | Full dev mode with Tauri window |
-| `pnpm tauri build` | Production build |
+| `pnpm dev` | Start Vite dev server (UI only, no Electron shell) |
+| `pnpm dev:electron` | Build and launch full Electron window |
+| `pnpm build` | TypeScript check + Vite production build |
+| `pnpm dist` | Full production build + electron-builder packaging |
 | `pnpm format` | Format code (Biome) |
 | `pnpm lint` | Lint code (Biome) |
-| `pnpm check` | Format + lint + typecheck |
 | `pnpm test` | Run unit tests |
 
 ## Project Structure

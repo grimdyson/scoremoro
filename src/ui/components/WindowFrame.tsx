@@ -1,3 +1,4 @@
+import type { AccentMode } from '@core/types';
 import type { ReactNode } from 'react';
 import {
   CloseWindowIcon,
@@ -16,6 +17,10 @@ interface WindowFrameProps {
   showEdit?: boolean;
   /** Called when the edit icon is clicked (returns to idle) */
   onEdit?: () => void;
+  /** Finish time to display centred in the header (e.g. "13:00") */
+  finishTime?: string;
+  /** Accent colour for the finish time text */
+  finishTimeAccent?: AccentMode;
   children: ReactNode;
 }
 
@@ -24,6 +29,8 @@ export function WindowFrame({
   onToggleMute,
   showEdit = false,
   onEdit,
+  finishTime,
+  finishTimeAccent,
   children,
 }: WindowFrameProps): ReactNode {
   const handleMinimize = () => {
@@ -41,6 +48,15 @@ export function WindowFrame({
         <div className="window-frame__logo">
           <LogoIcon />
         </div>
+
+        {finishTime && (
+          <div className="window-frame__finish-time">
+            <span className={`window-frame__finish-value window-frame__finish-value--${finishTimeAccent ?? 'work'}`}>
+              {finishTime}
+            </span>
+            <span className="window-frame__finish-label">Finish</span>
+          </div>
+        )}
 
         <div className="window-frame__controls">
           <button
@@ -62,6 +78,8 @@ export function WindowFrame({
               <EditIcon size={20} />
             </button>
           )}
+
+          <span className="window-frame__divider" />
 
           <button
             className="window-frame__control"

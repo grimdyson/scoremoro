@@ -30,7 +30,31 @@
   align-items: center;
   color: var(--color-white);
   flex-shrink: 0;
+  flex: 1 0 0;
   -webkit-app-region: no-drag;
+}
+
+.window-frame__finish-time {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.window-frame__finish-value--work {
+  color: var(--color-work);
+}
+
+.window-frame__finish-value--break {
+  color: var(--color-break);
+}
+
+.window-frame__finish-label {
+  color: var(--color-muted);
 }
 
 .window-frame__controls {
@@ -38,8 +62,16 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 12px;
   flex: 1 0 0;
+}
+
+.window-frame__divider {
+  width: 1px;
+  height: 20px;
+  background: var(--color-white);
+  opacity: 0.25;
+  flex-shrink: 0;
 }
 
 .window-frame__control {

@@ -3,8 +3,6 @@ import type { ReactNode } from 'react';
 import './screens.css';
 
 interface BreakFinishedScreenProps {
-  currentTime: string;
-  finishTime: string;
   elapsedMs: number;
   breakMinutes: number;
   totalDurationMs: number;
@@ -21,8 +19,6 @@ interface BreakFinishedScreenProps {
 }
 
 export function BreakFinishedScreen({
-  currentTime,
-  finishTime,
   elapsedMs,
   breakMinutes,
   totalDurationMs,
@@ -42,9 +38,8 @@ export function BreakFinishedScreen({
     >
       <div className="screen__top">
         <InfoCluster
-          currentTime={currentTime}
-          finishTime={finishTime}
           accent="break"
+          showTimes={false}
           completedWork={completedWork}
           completedBreaks={completedBreaks}
           startedWork={startedWork}

@@ -20,13 +20,24 @@ export function TimerMetrics({
   const remaining = formatTimeParts(remainingMs);
   const elapsed = formatTimeParts(elapsedMs);
 
+  const isZeroed = remainingMs <= 0;
+
+  const remainingColorClass = accent === 'break'
+    ? 'timer-metrics__time--break'
+    : 'timer-metrics__time--work';
+
+  const remainingClasses = [
+    'timer-metrics__time',
+    remainingColorClass,
+    flash ? 'timer-metrics__time--flash' : '',
+    isZeroed && !flash ? 'timer-metrics__time--zeroed' : '',
+  ].filter(Boolean).join(' ');
+
   return (
     <div className="timer-metrics">
       <div className="timer-metrics__column timer-metrics__column--left">
         <span className="timer-metrics__label">Remaining</span>
-        <div
-          className={`timer-metrics__time timer-metrics__time--white${flash ? ' timer-metrics__time--flash' : ''}`}
-        >
+        <div className={remainingClasses}>
           <span>{remaining.mm}</span>
           <span>:</span>
           <span>{remaining.ss}</span>

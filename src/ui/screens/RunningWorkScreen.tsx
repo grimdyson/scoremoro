@@ -3,8 +3,6 @@ import type { ReactNode } from 'react';
 import './screens.css';
 
 interface RunningWorkScreenProps {
-  currentTime: string;
-  finishTime: string;
   remainingMs: number;
   elapsedMs: number;
   workMinutes: number;
@@ -17,8 +15,6 @@ interface RunningWorkScreenProps {
 }
 
 export function RunningWorkScreen({
-  currentTime,
-  finishTime,
   remainingMs,
   elapsedMs,
   workMinutes,
@@ -33,9 +29,8 @@ export function RunningWorkScreen({
     <div className="screen screen--timer">
       <div className="screen__top">
         <InfoCluster
-          currentTime={currentTime}
-          finishTime={finishTime}
           accent="work"
+          showTimes={false}
           completedWork={completedWork}
           completedBreaks={completedBreaks}
           startedWork={startedWork}

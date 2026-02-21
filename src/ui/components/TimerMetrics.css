@@ -60,6 +60,11 @@
   color: var(--color-muted);
 }
 
+/* Zeroed state — remaining 00:00 knocked back to 10% after flash ends */
+.timer-metrics__time--zeroed {
+  opacity: 0.1;
+}
+
 /* Flash animation — blinks 00:00 for 1 second when timer completes */
 .timer-metrics__time--flash {
   animation: remaining-flash 0.25s ease-in-out 4;

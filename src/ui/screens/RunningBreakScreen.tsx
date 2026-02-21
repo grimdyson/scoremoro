@@ -3,8 +3,6 @@ import type { ReactNode } from 'react';
 import './screens.css';
 
 interface RunningBreakScreenProps {
-  currentTime: string;
-  finishTime: string;
   remainingMs: number;
   elapsedMs: number;
   breakMinutes: number;
@@ -17,8 +15,6 @@ interface RunningBreakScreenProps {
 }
 
 export function RunningBreakScreen({
-  currentTime,
-  finishTime,
   remainingMs,
   elapsedMs,
   breakMinutes,
@@ -33,9 +29,8 @@ export function RunningBreakScreen({
     <div className="screen screen--timer">
       <div className="screen__top">
         <InfoCluster
-          currentTime={currentTime}
-          finishTime={finishTime}
           accent="break"
+          showTimes={false}
           completedWork={completedWork}
           completedBreaks={completedBreaks}
           startedWork={startedWork}
