@@ -1,0 +1,75 @@
+/* ============================================================
+   ActionCluster — Skip (BREAK >>), Restart, CTA
+   ============================================================ */
+
+.action-cluster {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.action-cluster__btn {
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  line-height: 1;
+  white-space: nowrap;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.action-cluster__btn--work {
+  color: var(--color-work);
+}
+
+.action-cluster__btn--break {
+  color: var(--color-break);
+}
+
+.action-cluster__btn--cta {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+.action-cluster__btn--skip {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--color-break);
+  text-decoration: none;
+}
+
+.action-cluster__btn--restart {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--color-work);
+  text-decoration: none;
+}
+
+.action-cluster__mute {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.action-cluster__mute--muted {
+  opacity: 0.4;
+}

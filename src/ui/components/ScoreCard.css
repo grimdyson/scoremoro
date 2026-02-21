@@ -1,0 +1,73 @@
+/* ============================================================
+   ScoreCard — Work / Break completion counters
+   ============================================================ */
+
+.score-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* On the idle screen, vertically centre between the mode cards */
+.score-card--idle {
+  align-self: center;
+  align-items: center;
+}
+
+.score-card__title {
+  color: #f09e1f;
+}
+
+.score-card__row {
+  display: flex;
+  gap: var(--space-8);
+  align-items: baseline;
+}
+
+.score-card__count {
+  display: flex;
+  align-items: baseline;
+}
+
+.score-card__slash {
+  color: var(--color-white);
+}
+
+.score-card__label {
+  color: var(--color-muted);
+}
+
+.score-card__label--work {
+  color: var(--color-work);
+}
+
+.score-card__label--break {
+  color: var(--color-break);
+}
+
+/* ---- Colour variants ---- */
+
+/* Default: both counts are white */
+.score-card__count--work,
+.score-card__count--break {
+  color: var(--color-white);
+}
+
+/* Perfect fraction: overrides when completed === started > 0 */
+.score-card__count--perfect {
+  color: var(--color-score-perfect) !important;
+}
+
+/* Slash turns green when perfect */
+.score-card__count--perfect .score-card__slash {
+  color: var(--color-score-perfect);
+}
+
+/* Numerator stays green when score was perfect before current segment */
+.score-card__numerator--green {
+  color: var(--color-score-perfect);
+}

@@ -1,0 +1,76 @@
+/* ============================================================
+   TimerMetrics — Remaining (primary) + Elapsed (secondary)
+   ============================================================ */
+
+.timer-metrics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--space-12);
+}
+
+.timer-metrics__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.timer-metrics__column--left {
+  align-items: flex-start;
+}
+
+.timer-metrics__column--right {
+  align-items: flex-end;
+}
+
+.timer-metrics__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-white);
+}
+
+.timer-metrics__label--muted {
+  color: var(--color-muted);
+}
+
+.timer-metrics__time {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-size: 3.5rem; /* 56px */
+  line-height: 1;
+}
+
+.timer-metrics__time--white {
+  color: var(--color-white);
+}
+
+.timer-metrics__time--work {
+  color: var(--color-work);
+}
+
+.timer-metrics__time--break {
+  color: var(--color-break);
+}
+
+.timer-metrics__time--muted {
+  color: var(--color-muted);
+}
+
+/* Flash animation — blinks 00:00 for 1 second when timer completes */
+.timer-metrics__time--flash {
+  animation: remaining-flash 0.25s ease-in-out 4;
+}
+
+@keyframes remaining-flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

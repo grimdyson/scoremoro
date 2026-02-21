@@ -1,0 +1,56 @@
+/* ============================================================
+   Screen Layouts — shared screen CSS
+   ============================================================ */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
+}
+
+/* --- Idle screen --- */
+.screen--idle .screen__top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  width: 100%;
+  z-index: 2;
+}
+
+.screen--idle .screen__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: var(--space-8);
+  width: 100%;
+  flex: 1 1 0;
+  z-index: 1;
+}
+
+/* --- Timer screen (running / finished) --- */
+.screen--timer {
+  justify-content: flex-start;
+}
+
+.screen--timer.screen--finished {
+  cursor: pointer;
+}
+
+.screen--timer .screen__top {
+  flex-shrink: 0;
+}
+
+.screen--timer .screen__middle {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  justify-content: center;
+  width: 100%;
+}
+
+.screen--timer .screen__bottom {
+  flex-shrink: 0;
+  width: 100%;
+}

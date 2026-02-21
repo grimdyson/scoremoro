@@ -1,0 +1,53 @@
+/* ============================================================
+   TimelineRuler — Infinite sliding dial
+   Three copies of the pattern; CSS modular wrap keeps it seamless.
+   ============================================================ */
+
+.timeline-ruler {
+  position: relative;
+  width: 100%;
+  height: var(--tick-long-h);
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  flex-shrink: 0;
+}
+
+.timeline-ruler--grabbing {
+  cursor: grabbing;
+}
+
+.timeline-ruler--disabled {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.timeline-ruler__strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  gap: var(--tick-gap);
+  align-items: flex-end;
+  height: 100%;
+  will-change: transform;
+}
+
+.timeline-ruler__tick {
+  width: var(--tick-width);
+  flex-shrink: 0;
+}
+
+.timeline-ruler__tick--short {
+  height: var(--tick-short-h);
+  background: var(--color-tick-short);
+}
+
+.timeline-ruler__tick--long {
+  height: var(--tick-long-h);
+  background: var(--color-tick-long);
+}
+
+.timeline-ruler__tick--hidden {
+  opacity: 0;
+}

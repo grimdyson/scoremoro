@@ -1,0 +1,73 @@
+/* ============================================================
+   ModeSelectorCard — Work / Break duration cards
+   ============================================================ */
+
+.mode-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-padding);
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+  font-weight: normal;
+  line-height: 1;
+}
+
+/* Alignment variants */
+.mode-card--left {
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.mode-card--right {
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+/* Selected states */
+.mode-card--work-selected {
+  border-color: rgba(255, 255, 255, 0.2);
+  border-style: dashed;
+}
+
+.mode-card--work-deselected {
+  border-color: transparent;
+}
+
+.mode-card--break-selected {
+  border-color: rgba(255, 255, 255, 0.2);
+  border-style: dashed;
+}
+
+.mode-card--break-deselected {
+  border-color: transparent;
+}
+
+/* Hover state for break when work is selected */
+.mode-card--break-hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  border-style: dashed;
+}
+
+.mode-card__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  color: var(--color-white);
+  text-transform: uppercase;
+}
+
+.mode-card__value {
+  font-family: var(--font-display);
+  font-size: var(--text-time-lg);
+  line-height: 1;
+}
+
+.mode-card__value--work {
+  color: var(--color-work);
+}
+
+.mode-card__value--break {
+  color: var(--color-break);
+}

@@ -1,0 +1,68 @@
+/* ============================================================
+   SegmentedProgressBar — Two 30-second slabs per minute bar
+   Colour fills top-to-bottom; active slab flashes in last 5 s.
+   ============================================================ */
+
+.progress-bar {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: var(--bar-gap);
+  width: 100%;
+  height: var(--bar-height);
+  flex-shrink: 0;
+}
+
+.progress-bar__segment {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* Top slab = first 30 seconds, Bottom slab = last 30 seconds */
+.progress-bar__slab {
+  flex: 1 1 0;
+  border-radius: 1px;
+}
+
+/* ---- Filled (complete) ---- */
+.progress-bar__slab--work-filled {
+  background: var(--color-work);
+}
+
+.progress-bar__slab--break-filled {
+  background: var(--color-break);
+}
+
+/* ---- Dimmed (not yet reached) ---- */
+.progress-bar__slab--work-dimmed {
+  background: var(--color-work);
+  opacity: var(--bar-dimmed-opacity);
+}
+
+.progress-bar__slab--break-dimmed {
+  background: var(--color-break);
+  opacity: var(--bar-dimmed-opacity);
+}
+
+/* ---- Flashing (last 5 s of the active slab) ---- */
+.progress-bar__slab--work-flashing {
+  background: var(--color-work);
+  animation: slab-flash 0.4s ease-in-out infinite;
+}
+
+.progress-bar__slab--break-flashing {
+  background: var(--color-break);
+  animation: slab-flash 0.4s ease-in-out infinite;
+}
+
+@keyframes slab-flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: var(--bar-dimmed-opacity);
+  }
+}
