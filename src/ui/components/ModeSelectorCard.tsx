@@ -35,12 +35,8 @@ export function ModeSelectorCard({
 
   return (
     <button className={`mode-card ${alignClass} ${borderClass}`} onClick={onClick} type="button">
-      <span className="mode-card__label">{label}</span>
-      <span
-        className={`mode-card__value ${
-          isWork ? 'mode-card__value--work' : 'mode-card__value--break'
-        }`}
-      >
+      <span className={`mode-card__label ${isWork ? 'mode-card__label--work' : 'mode-card__label--break'}`}>{label}</span>
+      <span className="mode-card__value">
         {String(minutes).padStart(2, '0')}
       </span>
     </button>

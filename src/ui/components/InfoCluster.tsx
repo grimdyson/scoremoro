@@ -1,5 +1,7 @@
 import type { AccentMode } from '@core/types';
 import type { ReactNode } from 'react';
+import { EditIcon } from './icons';
+import { ScoreCard } from './ScoreCard';
 import './InfoCluster.css';
 
 interface InfoClusterProps {
@@ -15,6 +17,8 @@ interface InfoClusterProps {
   completedBreaks?: number;
   startedWork?: number;
   startedBreaks?: number;
+  /** Called when the edit (pencil) icon is clicked (returns to idle) */
+  onEdit?: () => void;
   children?: ReactNode;
 }
 
@@ -28,17 +32,10 @@ export function InfoCluster({
   completedBreaks = 0,
   startedWork = 0,
   startedBreaks = 0,
+  onEdit,
   children,
 }: InfoClusterProps): ReactNode {
   const showScores = startedWork > 0 || startedBreaks > 0;
-  const workPerfect = startedWork > 0 && completedWork === startedWork;
-  const breakPerfect = startedBreaks > 0 && completedBreaks === startedBreaks;
-
-  // Numerator stays green when the score was perfect before the current segment
-  const workNumeratorGreen =
-    !workPerfect && completedWork > 0 && completedWork === startedWork - 1;
-  const breakNumeratorGreen =
-    !breakPerfect && completedBreaks > 0 && completedBreaks === startedBreaks - 1;
 
   const accentClass = accent === 'break' ? ' info-cluster--break-accent' : '';
 
@@ -64,34 +61,24 @@ export function InfoCluster({
       {showDivider && <div className={`info-cluster__divider info-cluster__divider--${accent}`} />}
 
       {showScores && (
-        <div className="info-cluster__scores">
-          <div className="info-cluster__score-row">
-            <span
-              className={`info-cluster__score-count${workPerfect ? ' info-cluster__score-count--perfect' : ''}`}
-            >
-              <span className={workNumeratorGreen ? 'info-cluster__numerator--green' : ''}>
-                {completedWork}
-              </span>
-              <span className="info-cluster__score-slash">/</span>
-              <span>{startedWork}</span>
-            </span>
-            <span className="info-cluster__score-label info-cluster__score-label--work">Work</span>
-          </div>
-          <div className="info-cluster__score-row">
-            <span
-              className={`info-cluster__score-count${breakPerfect ? ' info-cluster__score-count--perfect' : ''}`}
-            >
-              <span className={breakNumeratorGreen ? 'info-cluster__numerator--green' : ''}>
-                {completedBreaks}
-              </span>
-              <span className="info-cluster__score-slash">/</span>
-              <span>{startedBreaks}</span>
-            </span>
-            <span className="info-cluster__score-label info-cluster__score-label--break">
-              Break
-            </span>
-          </div>
-        </div>
+        <ScoreCard
+          completedWork={completedWork}
+          completedBreaks={completedBreaks}
+          startedWork={startedWork}
+          startedBreaks={startedBreaks}
+          variant="timer"
+        />
+      )}
+
+      {showScores && onEdit && (
+        <button
+          className="info-cluster__edit"
+          onClick={onEdit}
+          type="button"
+          aria-label="Edit"
+        >
+          <EditIcon size={20} />
+        </button>
       )}
 
       <div className="info-cluster__actions">{children}</div>

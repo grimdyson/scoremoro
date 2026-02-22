@@ -12,6 +12,7 @@ interface RunningBreakScreenProps {
   startedWork: number;
   startedBreaks: number;
   onRestart: () => void;
+  onEdit: () => void;
 }
 
 export function RunningBreakScreen({
@@ -24,6 +25,7 @@ export function RunningBreakScreen({
   startedWork,
   startedBreaks,
   onRestart,
+  onEdit,
 }: RunningBreakScreenProps): ReactNode {
   return (
     <div className="screen screen--timer">
@@ -35,6 +37,7 @@ export function RunningBreakScreen({
           completedBreaks={completedBreaks}
           startedWork={startedWork}
           startedBreaks={startedBreaks}
+          onEdit={onEdit}
         >
           <ActionCluster showRestart onRestart={onRestart} />
         </InfoCluster>

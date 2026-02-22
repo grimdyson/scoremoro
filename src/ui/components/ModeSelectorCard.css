@@ -28,7 +28,7 @@
 
 /* Selected states */
 .mode-card--work-selected {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--color-card-selected);
   border-style: dashed;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .mode-card--break-selected {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--color-card-selected);
   border-style: dashed;
 }
 
@@ -47,27 +47,28 @@
 
 /* Hover state for break when work is selected */
 .mode-card--break-hover {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--color-card-hover);
   border-style: dashed;
 }
 
 .mode-card__label {
   font-family: var(--font-mono);
   font-size: var(--text-label);
-  color: var(--color-white);
   text-transform: uppercase;
+}
+
+.mode-card__label--work {
+  color: var(--color-work);
+}
+
+.mode-card__label--break {
+  color: var(--color-break);
 }
 
 .mode-card__value {
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: var(--text-time-lg);
   line-height: 1;
-}
-
-.mode-card__value--work {
-  color: var(--color-work);
-}
-
-.mode-card__value--break {
-  color: var(--color-break);
+  color: var(--color-white);
 }

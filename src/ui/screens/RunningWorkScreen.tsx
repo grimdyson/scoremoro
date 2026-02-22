@@ -12,6 +12,7 @@ interface RunningWorkScreenProps {
   startedWork: number;
   startedBreaks: number;
   onSkip: () => void;
+  onEdit: () => void;
 }
 
 export function RunningWorkScreen({
@@ -24,6 +25,7 @@ export function RunningWorkScreen({
   startedWork,
   startedBreaks,
   onSkip,
+  onEdit,
 }: RunningWorkScreenProps): ReactNode {
   return (
     <div className="screen screen--timer">
@@ -35,6 +37,7 @@ export function RunningWorkScreen({
           completedBreaks={completedBreaks}
           startedWork={startedWork}
           startedBreaks={startedBreaks}
+          onEdit={onEdit}
         >
           <ActionCluster showSkip onSkip={onSkip} />
         </InfoCluster>

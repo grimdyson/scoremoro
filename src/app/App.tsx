@@ -1,5 +1,6 @@
 import type { SelectionMode, TimerState } from '@core/types';
 import { accentForState, isFinished, isIdle, isRunning } from '@core/types';
+import { useTheme } from '@core/useTheme';
 import { useTimerSound } from '@core/useTimerSound';
 import { WindowFrame } from '@ui/components';
 import {
@@ -346,6 +347,8 @@ export function App(): ReactNode {
     }
   }, [state.timerState, playFinishSound, stopFinishSound]);
 
+  const { theme, toggleTheme } = useTheme();
+
   const handleClose = useCallback(() => dispatch({ type: 'CLOSE' }), []);
   const handleMute = useCallback(() => dispatch({ type: 'TOGGLE_MUTE' }), []);
   const handleSkip = useCallback(() => dispatch({ type: 'SKIP_TO_BREAK' }), []);
@@ -366,7 +369,7 @@ export function App(): ReactNode {
     case 'Idle':
       return (
         <div className="app">
-          <WindowFrame isMuted={state.isMuted} onToggleMute={handleMute}>
+          <WindowFrame isMuted={state.isMuted} onToggleMute={handleMute} theme={theme} onToggleTheme={toggleTheme}>
             <IdleScreen
               currentTime={currentTime}
               finishTime={finishTime}
@@ -394,10 +397,10 @@ export function App(): ReactNode {
           <WindowFrame
             isMuted={state.isMuted}
             onToggleMute={handleMute}
-            showEdit
-            onEdit={handleClose}
             finishTime={finishTime}
             finishTimeAccent="work"
+            theme={theme}
+            onToggleTheme={toggleTheme}
           >
             <RunningWorkScreen
               remainingMs={state.remainingMs}
@@ -409,6 +412,7 @@ export function App(): ReactNode {
               startedWork={state.startedWork}
               startedBreaks={state.startedBreaks}
               onSkip={handleSkip}
+              onEdit={handleClose}
             />
           </WindowFrame>
         </div>
@@ -420,10 +424,10 @@ export function App(): ReactNode {
           <WindowFrame
             isMuted={state.isMuted}
             onToggleMute={handleMute}
-            showEdit
-            onEdit={handleClose}
             finishTime={finishTime}
             finishTimeAccent="work"
+            theme={theme}
+            onToggleTheme={toggleTheme}
           >
             <WorkFinishedScreen
               elapsedMs={elapsedMs}
@@ -433,7 +437,8 @@ export function App(): ReactNode {
               completedBreaks={state.completedBreaks}
               startedWork={state.startedWork}
               startedBreaks={state.startedBreaks}
-              onSkip={handleSkip}
+              onStartBreak={handleSkip}
+              onEdit={handleClose}
               onStopSound={stopFinishSound}
               isSoundPlaying={isSoundPlaying}
               flashRemaining={flashRemaining}
@@ -449,10 +454,10 @@ export function App(): ReactNode {
           <WindowFrame
             isMuted={state.isMuted}
             onToggleMute={handleMute}
-            showEdit
-            onEdit={handleClose}
             finishTime={finishTime}
             finishTimeAccent="break"
+            theme={theme}
+            onToggleTheme={toggleTheme}
           >
             <RunningBreakScreen
               remainingMs={state.remainingMs}
@@ -464,6 +469,7 @@ export function App(): ReactNode {
               startedWork={state.startedWork}
               startedBreaks={state.startedBreaks}
               onRestart={handleRestart}
+              onEdit={handleClose}
             />
           </WindowFrame>
         </div>
@@ -475,10 +481,10 @@ export function App(): ReactNode {
           <WindowFrame
             isMuted={state.isMuted}
             onToggleMute={handleMute}
-            showEdit
-            onEdit={handleClose}
             finishTime={finishTime}
             finishTimeAccent="break"
+            theme={theme}
+            onToggleTheme={toggleTheme}
           >
             <BreakFinishedScreen
               elapsedMs={elapsedMs}
@@ -489,6 +495,7 @@ export function App(): ReactNode {
               startedWork={state.startedWork}
               startedBreaks={state.startedBreaks}
               onRestart={handleRestart}
+              onEdit={handleClose}
               onStopSound={stopFinishSound}
               isSoundPlaying={isSoundPlaying}
               flashRemaining={flashRemaining}

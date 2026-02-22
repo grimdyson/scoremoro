@@ -1,5 +1,5 @@
 /* ============================================================
-   ActionCluster — Skip (BREAK >>), Restart, CTA
+   ActionCluster — Skip (SKIP >>), Start Break (>), Restart, CTA
    ============================================================ */
 
 .action-cluster {
@@ -18,7 +18,7 @@
   font-family: var(--font-mono);
   font-size: 12px;
   text-transform: uppercase;
-  text-decoration: underline;
+  text-decoration: none;
   line-height: 1;
   white-space: nowrap;
   padding: 0;
@@ -36,11 +36,22 @@
 }
 
 .action-cluster__btn--cta {
+  display: flex;
+  align-items: center;
+  gap: 2px;
   color: var(--color-white);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .action-cluster__btn--skip {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--color-break);
+  text-decoration: none;
+}
+
+.action-cluster__btn--start-break {
   display: flex;
   align-items: center;
   gap: 2px;

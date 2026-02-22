@@ -11,8 +11,11 @@ export {
   MinimizeIcon,
   CloseWindowIcon,
   EditIcon,
-  ChevronRightIcon,
+  NextIcon,
+  SkipIcon,
   RestartIcon,
+  MoonIcon,
+  SunIcon,
   LogoIcon,
 } from './icons';
 export { WindowFrame } from './WindowFrame';

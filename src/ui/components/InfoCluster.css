@@ -79,67 +79,24 @@
 
 .info-cluster--has-scores .info-cluster__actions {
   flex: 0 0 auto;
+  margin-left: auto;
 }
 
-/* ---- Score column (centre) ---- */
-
-.info-cluster__scores {
-  flex: 1 0 0;
-  min-width: 0;
+.info-cluster__edit {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  gap: 2px;
-  font-family: var(--font-mono);
-  font-size: var(--text-label);
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-.info-cluster__score-row {
-  display: flex;
-  gap: 8px;
-  align-items: baseline;
-}
-
-.info-cluster__score-count {
-  display: flex;
-  align-items: baseline;
   color: var(--color-white);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 0.6;
 }
 
-.info-cluster__score-slash {
-  color: var(--color-white);
-}
-
-.info-cluster__score-count--perfect {
-  color: var(--color-score-perfect);
-}
-
-.info-cluster__score-count--perfect .info-cluster__score-slash {
-  color: var(--color-score-perfect);
-}
-
-/* Numerator stays green when streak was perfect before current segment */
-.info-cluster__numerator--green {
-  color: var(--color-score-perfect);
-}
-
-.info-cluster__score-label {
-  color: var(--color-muted);
-}
-
-.info-cluster__score-label--work {
-  color: var(--color-work);
-}
-
-.info-cluster__score-label--break {
-  color: var(--color-break);
-}
-
-/* Break-accent screens use muted score labels */
-.info-cluster--break-accent .info-cluster__score-label--work,
-.info-cluster--break-accent .info-cluster__score-label--break {
-  color: var(--color-muted);
+.info-cluster__edit:hover {
+  opacity: 1;
 }

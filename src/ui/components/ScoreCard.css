@@ -1,11 +1,11 @@
 /* ============================================================
-   ScoreCard — Work / Break completion counters
+   ScoreCard — Work / Break completion lozenge badges
    ============================================================ */
 
 .score-card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-4);
   font-family: var(--font-mono);
   font-size: var(--text-label);
   text-transform: uppercase;
@@ -19,55 +19,59 @@
 }
 
 .score-card__title {
-  color: #f09e1f;
+  color: var(--color-score-title);
 }
 
-.score-card__row {
+.score-card__badges {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+/* ---- Lozenge badge (shared) ---- */
+
+.score-badge {
   display: flex;
   gap: var(--space-8);
   align-items: baseline;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  line-height: 1;
 }
 
-.score-card__count {
-  display: flex;
-  align-items: baseline;
+/* Work lozenge (non-streak) */
+.score-badge--work {
+  background: var(--color-badge-work-bg);
+  border-color: var(--color-badge-work-border);
 }
 
-.score-card__slash {
+/* Break lozenge (non-streak) */
+.score-badge--break {
+  background: var(--color-badge-break-bg);
+  border-color: var(--color-badge-break-border);
+}
+
+/* Streak / perfect lozenge (green) */
+.score-badge--streak {
+  background: var(--color-badge-streak-bg);
+  border-color: var(--color-badge-streak-border);
+}
+
+/* All lozenge text defaults to white */
+.score-badge__count {
   color: var(--color-white);
 }
 
-.score-card__label {
-  color: var(--color-muted);
-}
-
-.score-card__label--work {
-  color: var(--color-work);
-}
-
-.score-card__label--break {
-  color: var(--color-break);
-}
-
-/* ---- Colour variants ---- */
-
-/* Default: both counts are white */
-.score-card__count--work,
-.score-card__count--break {
+.score-badge__label {
   color: var(--color-white);
 }
 
-/* Perfect fraction: overrides when completed === started > 0 */
-.score-card__count--perfect {
-  color: var(--color-score-perfect) !important;
-}
-
-/* Slash turns green when perfect */
-.score-card__count--perfect .score-card__slash {
-  color: var(--color-score-perfect);
-}
-
-/* Numerator stays green when score was perfect before current segment */
-.score-card__numerator--green {
+/* Only override count colour when streak is active */
+.score-badge--streak .score-badge__count {
   color: var(--color-score-perfect);
 }

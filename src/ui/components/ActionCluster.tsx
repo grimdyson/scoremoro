@@ -1,11 +1,14 @@
 import type { ReactNode } from 'react';
-import { ChevronRightIcon, RestartIcon } from './icons';
+import { NextIcon, SkipIcon, RestartIcon } from './icons';
 import './ActionCluster.css';
 
 interface ActionClusterProps {
-  /** Show "Break >>" action (work phase) */
+  /** Show "Skip >>" action (running work phase) */
   showSkip?: boolean;
   onSkip?: () => void;
+  /** Show "Start Break >" action (work finished phase) */
+  showStartBreak?: boolean;
+  onStartBreak?: () => void;
   /** Show "Again" action with restart icon (break finished) */
   showRestart?: boolean;
   onRestart?: () => void;
@@ -14,6 +17,8 @@ interface ActionClusterProps {
 export function ActionCluster({
   showSkip = false,
   onSkip,
+  showStartBreak = false,
+  onStartBreak,
   showRestart = false,
   onRestart,
 }: ActionClusterProps): ReactNode {
@@ -36,8 +41,19 @@ export function ActionCluster({
           onClick={onSkip}
           type="button"
         >
-          <span>Break</span>
-          <ChevronRightIcon size={20} />
+          <span>Skip</span>
+          <SkipIcon size={20} />
+        </button>
+      )}
+
+      {showStartBreak && (
+        <button
+          className="action-cluster__btn action-cluster__btn--start-break"
+          onClick={onStartBreak}
+          type="button"
+        >
+          <span>Start Break</span>
+          <NextIcon size={20} />
         </button>
       )}
     </div>
@@ -56,7 +72,8 @@ export function StartPomodoroCta({
       onClick={onClick}
       type="button"
     >
-      Start Pomodoro
+      <span>Start Pomodoro</span>
+      <NextIcon size={20} />
     </button>
   );
 }

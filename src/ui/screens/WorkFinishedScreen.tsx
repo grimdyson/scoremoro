@@ -10,7 +10,8 @@ interface WorkFinishedScreenProps {
   completedBreaks: number;
   startedWork: number;
   startedBreaks: number;
-  onSkip: () => void;
+  onStartBreak: () => void;
+  onEdit: () => void;
   onStopSound: () => void;
   /** Whether the alarm is currently audible */
   isSoundPlaying: boolean;
@@ -26,7 +27,8 @@ export function WorkFinishedScreen({
   completedBreaks,
   startedWork,
   startedBreaks,
-  onSkip,
+  onStartBreak,
+  onEdit,
   onStopSound,
   isSoundPlaying,
   flashRemaining = false,
@@ -44,8 +46,9 @@ export function WorkFinishedScreen({
           completedBreaks={completedBreaks}
           startedWork={startedWork}
           startedBreaks={startedBreaks}
+          onEdit={onEdit}
         >
-          <ActionCluster showSkip onSkip={onSkip} />
+          <ActionCluster showStartBreak onStartBreak={onStartBreak} />
         </InfoCluster>
       </div>
 

@@ -1,10 +1,12 @@
 import type { AccentMode } from '@core/types';
+import type { Theme } from '@core/useTheme';
 import type { ReactNode } from 'react';
 import {
   CloseWindowIcon,
-  EditIcon,
   LogoIcon,
   MinimizeIcon,
+  MoonIcon,
+  SunIcon,
   VolumeIcon,
   VolumeMutedIcon,
 } from './icons';
@@ -13,10 +15,10 @@ import './WindowFrame.css';
 interface WindowFrameProps {
   isMuted: boolean;
   onToggleMute: () => void;
-  /** Show the edit (pencil) icon in the header controls */
-  showEdit?: boolean;
-  /** Called when the edit icon is clicked (returns to idle) */
-  onEdit?: () => void;
+  /** Current theme */
+  theme: Theme;
+  /** Toggle between dark/light */
+  onToggleTheme: () => void;
   /** Finish time to display centred in the header (e.g. "13:00") */
   finishTime?: string;
   /** Accent colour for the finish time text */
@@ -27,8 +29,8 @@ interface WindowFrameProps {
 export function WindowFrame({
   isMuted,
   onToggleMute,
-  showEdit = false,
-  onEdit,
+  theme,
+  onToggleTheme,
   finishTime,
   finishTimeAccent,
   children,
@@ -68,18 +70,14 @@ export function WindowFrame({
             {isMuted ? <VolumeMutedIcon size={20} /> : <VolumeIcon size={20} />}
           </button>
 
-          {showEdit && (
-            <button
-              className="window-frame__control"
-              onClick={onEdit}
-              type="button"
-              aria-label="Edit"
-            >
-              <EditIcon size={20} />
-            </button>
-          )}
-
-          <span className="window-frame__divider" />
+          <button
+            className="window-frame__control"
+            onClick={onToggleTheme}
+            type="button"
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          >
+            {theme === 'dark' ? <SunIcon size={20} /> : <MoonIcon size={20} />}
+          </button>
 
           <button
             className="window-frame__control"

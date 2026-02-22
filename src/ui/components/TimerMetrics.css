@@ -33,13 +33,14 @@
 }
 
 .timer-metrics__label--muted {
-  color: var(--color-muted);
+  color: var(--color-white);
 }
 
 .timer-metrics__time {
   display: flex;
   align-items: baseline;
   font-family: var(--font-display);
+  font-weight: 700;
   font-size: 3.5rem; /* 56px */
   line-height: 1;
 }
@@ -57,11 +58,15 @@
 }
 
 .timer-metrics__time--muted {
-  color: var(--color-muted);
+  color: var(--color-white);
 }
 
-/* Zeroed state — remaining 00:00 knocked back to 10% after flash ends */
+/* Zeroed state — remaining knocked back to 10% after flash ends */
 .timer-metrics__time--zeroed {
+  opacity: 0.1;
+}
+
+.timer-metrics__label--zeroed {
   opacity: 0.1;
 }
 

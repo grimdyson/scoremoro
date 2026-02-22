@@ -81,7 +81,7 @@ Scoremoro is source-available under the **[PolyForm Noncommercial License 1.0.0]
 
 - You may **use, modify, and share** the code for any noncommercial purpose.
 - **Commercial use or resale** requires a separate commercial license.
-- Contact **hello@timdyson.com** for commercial licensing inquiries.
+- [Open an issue](https://github.com/grimdyson/Scoremoro/issues) for commercial licensing inquiries.
 - See [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md) for full details.
 
 This is **not** OSI-approved open source. The PolyForm Noncommercial license restricts commercial use, which means it does not meet the Open Source Definition.

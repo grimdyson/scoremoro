@@ -33,10 +33,15 @@ export function TimerMetrics({
     isZeroed && !flash ? 'timer-metrics__time--zeroed' : '',
   ].filter(Boolean).join(' ');
 
+  const remainingLabelClasses = [
+    'timer-metrics__label',
+    isZeroed && !flash ? 'timer-metrics__label--zeroed' : '',
+  ].filter(Boolean).join(' ');
+
   return (
     <div className="timer-metrics">
       <div className="timer-metrics__column timer-metrics__column--left">
-        <span className="timer-metrics__label">Remaining</span>
+        <span className={remainingLabelClasses}>Remaining</span>
         <div className={remainingClasses}>
           <span>{remaining.mm}</span>
           <span>:</span>

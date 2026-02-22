@@ -97,7 +97,25 @@ export function EditIcon({ size = 20, className }: IconProps): ReactNode {
   );
 }
 
-export function ChevronRightIcon({ size = 20, className }: IconProps): ReactNode {
+export function NextIcon({ size = 20, className }: IconProps): ReactNode {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M19.4139 12.587L16.5859 15.415L25.1709 24L16.5859 32.586L19.4139 35.414L30.8289 24L19.4139 12.587Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function SkipIcon({ size = 20, className }: IconProps): ReactNode {
   return (
     <svg
       width={size}
@@ -132,6 +150,53 @@ export function RestartIcon({ size = 20, className }: IconProps): ReactNode {
       <path
         d="M38 22V24C38 31.72 31.72 38 24 38C16.28 38 10 31.72 10 24C10 16.28 16.28 10 24 10H28V4L36 12L28 20V14H24C18.486 14 14 18.486 14 24C14 29.514 18.486 34 24 34C29.514 34 34 29.514 34 24V22H38Z"
         fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function MoonIcon({ size = 20, className }: IconProps): ReactNode {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M26.0002 4V8.001H21.9992V12.001H26.0002V16.001H30.0002V12.001H34.0002V8.001H30.0002V4H26.0002Z"
+        fill="currentColor"
+      />
+      <path
+        d="M22.5852 25.415C18.0262 20.855 16.6472 14.049 19.0732 8.073L16.4682 5.468C3.43121 10.489 -0.254786 28.434 9.85821 38.143C19.7222 48.235 37.3772 44.654 42.5322 31.534L39.9272 28.928C33.9512 31.353 27.1452 29.975 22.5852 25.415Z"
+        fill="currentColor"
+      />
+      <path
+        d="M36 18.0002L32 22.0003L36 26.0004L40.0001 22.0003L36 18.0002Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function SunIcon({ size = 20, className }: IconProps): ReactNode {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <circle cx="24" cy="24" r="8" fill="currentColor" />
+      <path
+        d="M24 4V10M24 38V44M4 24H10M38 24H44M9.86 9.86L14.1 14.1M33.9 33.9L38.14 38.14M38.14 9.86L33.9 14.1M14.1 33.9L9.86 38.14"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
       />
     </svg>
   );

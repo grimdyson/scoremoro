@@ -39,9 +39,7 @@ but are not limited to:
 
 ## How to request a commercial license
 
-Send an email to:
-
-**hello@timdyson.com**
+Open an issue on the [GitHub repository](https://github.com/grimdyson/Scoremoro/issues)
 
 Please include:
 
@@ -50,10 +48,6 @@ Please include:
 3. The expected scale of deployment (number of users, seats, or
    distributions).
 4. Any relevant timeline or launch date.
-
-Commercial terms (pricing, scope, duration) are negotiated on a
-case-by-case basis. There is no public price list; every
-arrangement is tailored to the use case.
 
 ## Questions
 

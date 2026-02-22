@@ -11,6 +11,7 @@ interface BreakFinishedScreenProps {
   startedWork: number;
   startedBreaks: number;
   onRestart: () => void;
+  onEdit: () => void;
   onStopSound: () => void;
   /** Whether the alarm is currently audible */
   isSoundPlaying: boolean;
@@ -27,6 +28,7 @@ export function BreakFinishedScreen({
   startedWork,
   startedBreaks,
   onRestart,
+  onEdit,
   onStopSound,
   isSoundPlaying,
   flashRemaining = false,
@@ -44,6 +46,7 @@ export function BreakFinishedScreen({
           completedBreaks={completedBreaks}
           startedWork={startedWork}
           startedBreaks={startedBreaks}
+          onEdit={onEdit}
         >
           <ActionCluster showRestart onRestart={onRestart} />
         </InfoCluster>
