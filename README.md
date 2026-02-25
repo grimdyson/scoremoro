@@ -1,8 +1,10 @@
 # Scoremoro
 
-A desktop Pomodoro timer that runs as an always-on-top Picture-in-Picture window. Scoremoro adds light gamification through a subtle session scoreboard, rewarding completed work and break cycles to help you build consistency without distracting from the task. Built with a clean, minimal UI and designed to stay pinned while you work.
+A desktop Pomodoro timer that runs as an always-on-top Picture-in-Picture window.
 
 ![](./src/ui/assets/splash.png)
+
+Scoremoro lightly gamifies the traditional Pomodoro with a session scoreboard, rewarding completed cycles to help you stay consistent without pulling you out of flow.
 
 ## Tech Stack
 
