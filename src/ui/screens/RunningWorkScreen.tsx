@@ -11,6 +11,8 @@ interface RunningWorkScreenProps {
   completedBreaks: number;
   startedWork: number;
   startedBreaks: number;
+  consecutiveWork: number;
+  consecutiveBreaks: number;
   onSkip: () => void;
   onEdit: () => void;
 }
@@ -24,6 +26,8 @@ export function RunningWorkScreen({
   completedBreaks,
   startedWork,
   startedBreaks,
+  consecutiveWork,
+  consecutiveBreaks,
   onSkip,
   onEdit,
 }: RunningWorkScreenProps): ReactNode {
@@ -37,6 +41,8 @@ export function RunningWorkScreen({
           completedBreaks={completedBreaks}
           startedWork={startedWork}
           startedBreaks={startedBreaks}
+          consecutiveWork={consecutiveWork}
+          consecutiveBreaks={consecutiveBreaks}
           onEdit={onEdit}
         >
           <ActionCluster showSkip onSkip={onSkip} />

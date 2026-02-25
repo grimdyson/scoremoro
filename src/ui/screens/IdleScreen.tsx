@@ -20,6 +20,8 @@ interface IdleScreenProps {
   completedBreaks: number;
   startedWork: number;
   startedBreaks: number;
+  consecutiveWork: number;
+  consecutiveBreaks: number;
   onSelectWork: () => void;
   onSelectBreak: () => void;
   onStartPomodoro: () => void;
@@ -37,6 +39,8 @@ export function IdleScreen({
   completedBreaks,
   startedWork,
   startedBreaks,
+  consecutiveWork,
+  consecutiveBreaks,
   onSelectWork,
   onSelectBreak,
   onStartPomodoro,
@@ -75,7 +79,10 @@ export function IdleScreen({
           completedBreaks={completedBreaks}
           startedWork={startedWork}
           startedBreaks={startedBreaks}
+          consecutiveWork={consecutiveWork}
+          consecutiveBreaks={consecutiveBreaks}
           variant="idle"
+          activePhase="none"
         />
         <ModeSelectorCard
           mode="break"

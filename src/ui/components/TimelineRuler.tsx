@@ -72,11 +72,11 @@ export function TimelineRuler({
    * tickWidth / 2 (not slotW / 2) so we align the tick's visual centre
    * rather than the centre of the tick-plus-gap slot.
    */
-  const tickWidth = 2; // matches --tick-width
+  const tickWidth = 1; // matches --tick-width
   const periodPx = PERIOD_TICKS * slotW;
   const rawOffset = containerW / 2 - (currentMinutes - 1) * slotW - tickWidth / 2;
   const offset =
-    periodPx > 0 ? (((rawOffset % periodPx) + periodPx) % periodPx) - periodPx : rawOffset;
+    periodPx > 0 ? Math.round((((rawOffset % periodPx) + periodPx) % periodPx) - periodPx) : Math.round(rawOffset);
 
   /**
    * Drag sensitivity: how many slot-widths of dragging equal 1 minute.

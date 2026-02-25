@@ -1,6 +1,6 @@
 import type { AccentMode } from '@core/types';
 import type { ReactNode } from 'react';
-import { EditIcon } from './icons';
+import { ExitIcon } from './icons';
 import { ScoreCard } from './ScoreCard';
 import './InfoCluster.css';
 
@@ -19,6 +19,10 @@ interface InfoClusterProps {
   startedBreaks?: number;
   /** Called when the edit (pencil) icon is clicked (returns to idle) */
   onEdit?: () => void;
+  /** Consecutive work completions (for streak) */
+  consecutiveWork?: number;
+  /** Consecutive break completions (for streak) */
+  consecutiveBreaks?: number;
   children?: ReactNode;
 }
 
@@ -33,6 +37,8 @@ export function InfoCluster({
   startedWork = 0,
   startedBreaks = 0,
   onEdit,
+  consecutiveWork = 0,
+  consecutiveBreaks = 0,
   children,
 }: InfoClusterProps): ReactNode {
   const showScores = startedWork > 0 || startedBreaks > 0;
@@ -67,6 +73,9 @@ export function InfoCluster({
           startedWork={startedWork}
           startedBreaks={startedBreaks}
           variant="timer"
+          activePhase={accent === 'break' ? 'break' : 'work'}
+          consecutiveWork={consecutiveWork}
+          consecutiveBreaks={consecutiveBreaks}
         />
       )}
 
@@ -75,9 +84,9 @@ export function InfoCluster({
           className="info-cluster__edit"
           onClick={onEdit}
           type="button"
-          aria-label="Edit"
+          aria-label="Exit to idle"
         >
-          <EditIcon size={20} />
+          <ExitIcon size={20} />
         </button>
       )}
 

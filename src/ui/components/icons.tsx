@@ -97,6 +97,42 @@ export function EditIcon({ size = 20, className }: IconProps): ReactNode {
   );
 }
 
+export function ExitIcon({ size = 20, className }: IconProps): ReactNode {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M32.7721 12.9349H28.8047V8.96745H15.6567L21.5361 11.0674L22.8535 11.5362V36.7396H28.8047V32.7721H32.7721V40.707H22.8535V44.5136L6.31731 38.6071L5 38.1383V5H32.7721V12.9349ZM45 22.8535L36.1583 31.695L33.3534 28.89L37.4059 24.8372H24.8372V20.8698H37.4059L33.3534 16.8171L36.1583 14.012L45 22.8535Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function FireIcon({ size = 12, className }: IconProps): ReactNode {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M24 13L24.0214 13.4082C24.226 15.4256 25.9286 17 28 17C29.2254 17 30.322 16.4497 31.0606 15.5723L32.4062 13.9707L33.9454 15.3887C37.0912 18.2876 39.9998 22.9682 40 28C40 36.8366 32.8366 44 24 44C15.1634 44 8 36.8366 8 28C8.00018 22.8192 10.3017 18.4004 12.9785 15.0078C15.6588 11.6109 18.8281 9.09616 20.8476 7.67188L24 5.44922V13ZM24 26C24 26 18 29.7338 18 34.4004C18.0002 37.493 20.6864 40 24 40C27.3136 40 29.9998 37.493 30 34.4004C30 29.7338 24 26 24 26Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 export function NextIcon({ size = 20, className }: IconProps): ReactNode {
   return (
     <svg

@@ -47,6 +47,10 @@ interface AppState {
   startedWork: number;
   /** Break segments started */
   startedBreaks: number;
+  /** Consecutive work completions without skip/exit (for streak) */
+  consecutiveWork: number;
+  /** Consecutive break completions without skip/exit (for streak) */
+  consecutiveBreaks: number;
 }
 
 const INITIAL_STATE: AppState = {
@@ -63,6 +67,8 @@ const INITIAL_STATE: AppState = {
   completedBreaks: 0,
   startedWork: 0,
   startedBreaks: 0,
+  consecutiveWork: 0,
+  consecutiveBreaks: 0,
 };
 
 /* ------------------------------------------------------------------ */
@@ -141,6 +147,7 @@ function reducer(state: AppState, action: AppAction): AppState {
             remainingMs: 0,
             finishedAtMs: Date.now(),
             completedSegments: state.completedSegments + 1,
+            consecutiveWork: state.consecutiveWork + 1,
           };
         }
         return { ...state, remainingMs: remaining };
@@ -154,6 +161,7 @@ function reducer(state: AppState, action: AppAction): AppState {
             remainingMs: 0,
             finishedAtMs: Date.now(),
             completedBreaks: state.completedBreaks + 1,
+            consecutiveBreaks: state.consecutiveBreaks + 1,
           };
         }
         return { ...state, remainingMs: remaining };
@@ -203,6 +211,9 @@ function reducer(state: AppState, action: AppAction): AppState {
 
     case 'SKIP_TO_BREAK': {
       const durationMs = state.breakMinutes * 60_000;
+      // Only reset the work streak when actually skipping mid-work,
+      // not when transitioning from a completed work session.
+      const wasSkipped = state.timerState === 'RunningWork' || state.timerState === 'PausedWork';
       return {
         ...state,
         timerState: 'RunningBreak',
@@ -210,6 +221,7 @@ function reducer(state: AppState, action: AppAction): AppState {
         totalDurationMs: durationMs,
         remainingMs: durationMs,
         startedBreaks: state.startedBreaks + 1,
+        consecutiveWork: wasSkipped ? 0 : state.consecutiveWork,
       };
     }
 
@@ -239,6 +251,9 @@ function reducer(state: AppState, action: AppAction): AppState {
     }
 
     case 'CLOSE': {
+      // Exiting mid-segment breaks the consecutive run for the active phase
+      const wasWork = state.timerState === 'RunningWork' || state.timerState === 'PausedWork';
+      const wasBreak = state.timerState === 'RunningBreak' || state.timerState === 'PausedBreak';
       return {
         ...INITIAL_STATE,
         workMinutes: state.workMinutes,
@@ -248,6 +263,8 @@ function reducer(state: AppState, action: AppAction): AppState {
         completedBreaks: state.completedBreaks,
         startedWork: state.startedWork,
         startedBreaks: state.startedBreaks,
+        consecutiveWork: wasWork ? 0 : state.consecutiveWork,
+        consecutiveBreaks: wasBreak ? 0 : state.consecutiveBreaks,
       };
     }
 
@@ -319,7 +336,7 @@ export function App(): ReactNode {
     play: playFinishSound,
     stop: stopFinishSound,
     isPlaying: isSoundPlaying,
-  } = useTimerSound('./sounds/659889__blondpanda__short-elevator-music-loop.wav', {
+  } = useTimerSound('./sounds/352655__foolboymedia__piano-notification-5a.mp3', {
     muted: state.isMuted,
   });
   const prevTimerState = useRef(state.timerState);
@@ -380,6 +397,8 @@ export function App(): ReactNode {
               completedBreaks={state.completedBreaks}
               startedWork={state.startedWork}
               startedBreaks={state.startedBreaks}
+              consecutiveWork={state.consecutiveWork}
+              consecutiveBreaks={state.consecutiveBreaks}
               onSelectWork={handleSelectWork}
               onSelectBreak={handleSelectBreak}
               onStartPomodoro={handleStart}
@@ -411,6 +430,8 @@ export function App(): ReactNode {
               completedBreaks={state.completedBreaks}
               startedWork={state.startedWork}
               startedBreaks={state.startedBreaks}
+              consecutiveWork={state.consecutiveWork}
+              consecutiveBreaks={state.consecutiveBreaks}
               onSkip={handleSkip}
               onEdit={handleClose}
             />
@@ -437,6 +458,8 @@ export function App(): ReactNode {
               completedBreaks={state.completedBreaks}
               startedWork={state.startedWork}
               startedBreaks={state.startedBreaks}
+              consecutiveWork={state.consecutiveWork}
+              consecutiveBreaks={state.consecutiveBreaks}
               onStartBreak={handleSkip}
               onEdit={handleClose}
               onStopSound={stopFinishSound}
@@ -468,6 +491,8 @@ export function App(): ReactNode {
               completedBreaks={state.completedBreaks}
               startedWork={state.startedWork}
               startedBreaks={state.startedBreaks}
+              consecutiveWork={state.consecutiveWork}
+              consecutiveBreaks={state.consecutiveBreaks}
               onRestart={handleRestart}
               onEdit={handleClose}
             />
@@ -494,6 +519,8 @@ export function App(): ReactNode {
               completedBreaks={state.completedBreaks}
               startedWork={state.startedWork}
               startedBreaks={state.startedBreaks}
+              consecutiveWork={state.consecutiveWork}
+              consecutiveBreaks={state.consecutiveBreaks}
               onRestart={handleRestart}
               onEdit={handleClose}
               onStopSound={stopFinishSound}

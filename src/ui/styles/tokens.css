@@ -28,8 +28,8 @@
   --color-badge-work-border: rgba(255, 64, 64, 0.24);
   --color-badge-break-bg: rgba(136, 217, 255, 0.16);
   --color-badge-break-border: rgba(136, 217, 255, 0.24);
-  --color-badge-streak-bg: rgba(34, 255, 0, 0.16);
-  --color-badge-streak-border: rgba(34, 255, 0, 0.24);
+  --color-badge-streak-bg: rgba(102, 255, 0, 0.32);
+  --color-badge-streak-border: rgba(102, 255, 0, 0.4);
 
   /* Card selection borders */
   --color-card-selected: rgba(255, 255, 255, 0.2);
@@ -49,7 +49,7 @@
   --space-12: 0.75rem;
 
   /* ---- Ruler ---- */
-  --tick-width: 2px;
+  --tick-width: 1px;
   --tick-short-h: 2.75rem; /* 44px */
   --tick-long-h: 4rem; /* 64px */
   --tick-gap: 0.25rem; /* 4px */
@@ -72,10 +72,10 @@
    ============================================================ */
 
 :root[data-theme='light'] {
-  /* Surfaces: dark → light */
-  --color-bg: #f0f0f0;
-  --color-surface: #ffffff;
-  --color-panel: #f0f0f0;
+  /* Surfaces: brighter = higher elevation */
+  --color-bg: #ffffff;
+  --color-surface: #f0f0f0;
+  --color-panel: #ffffff;
 
   /* Foreground: white → near-black */
   --color-white: #131414;
@@ -99,8 +99,8 @@
   --color-badge-work-border: rgba(224, 32, 32, 0.25);
   --color-badge-break-bg: rgba(33, 150, 214, 0.10);
   --color-badge-break-border: rgba(33, 150, 214, 0.25);
-  --color-badge-streak-bg: rgba(23, 166, 0, 0.10);
-  --color-badge-streak-border: rgba(23, 166, 0, 0.25);
+  --color-badge-streak-bg: rgba(102, 255, 0, 0.32);
+  --color-badge-streak-border: rgba(102, 255, 0, 0.4);
 
   /* Card selection borders */
   --color-card-selected: rgba(0, 0, 0, 0.2);

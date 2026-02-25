@@ -11,6 +11,8 @@ interface RunningBreakScreenProps {
   completedBreaks: number;
   startedWork: number;
   startedBreaks: number;
+  consecutiveWork: number;
+  consecutiveBreaks: number;
   onRestart: () => void;
   onEdit: () => void;
 }
@@ -24,6 +26,8 @@ export function RunningBreakScreen({
   completedBreaks,
   startedWork,
   startedBreaks,
+  consecutiveWork,
+  consecutiveBreaks,
   onRestart,
   onEdit,
 }: RunningBreakScreenProps): ReactNode {
@@ -37,6 +41,8 @@ export function RunningBreakScreen({
           completedBreaks={completedBreaks}
           startedWork={startedWork}
           startedBreaks={startedBreaks}
+          consecutiveWork={consecutiveWork}
+          consecutiveBreaks={consecutiveBreaks}
           onEdit={onEdit}
         >
           <ActionCluster showRestart onRestart={onRestart} />

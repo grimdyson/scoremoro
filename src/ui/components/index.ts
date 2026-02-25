@@ -11,6 +11,8 @@ export {
   MinimizeIcon,
   CloseWindowIcon,
   EditIcon,
+  ExitIcon,
+  FireIcon,
   NextIcon,
   SkipIcon,
   RestartIcon,

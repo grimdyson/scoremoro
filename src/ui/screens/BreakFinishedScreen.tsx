@@ -10,6 +10,8 @@ interface BreakFinishedScreenProps {
   completedBreaks: number;
   startedWork: number;
   startedBreaks: number;
+  consecutiveWork: number;
+  consecutiveBreaks: number;
   onRestart: () => void;
   onEdit: () => void;
   onStopSound: () => void;
@@ -27,6 +29,8 @@ export function BreakFinishedScreen({
   completedBreaks,
   startedWork,
   startedBreaks,
+  consecutiveWork,
+  consecutiveBreaks,
   onRestart,
   onEdit,
   onStopSound,
@@ -46,6 +50,8 @@ export function BreakFinishedScreen({
           completedBreaks={completedBreaks}
           startedWork={startedWork}
           startedBreaks={startedBreaks}
+          consecutiveWork={consecutiveWork}
+          consecutiveBreaks={consecutiveBreaks}
           onEdit={onEdit}
         >
           <ActionCluster showRestart onRestart={onRestart} />

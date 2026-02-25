@@ -10,6 +10,8 @@ interface WorkFinishedScreenProps {
   completedBreaks: number;
   startedWork: number;
   startedBreaks: number;
+  consecutiveWork: number;
+  consecutiveBreaks: number;
   onStartBreak: () => void;
   onEdit: () => void;
   onStopSound: () => void;
@@ -27,6 +29,8 @@ export function WorkFinishedScreen({
   completedBreaks,
   startedWork,
   startedBreaks,
+  consecutiveWork,
+  consecutiveBreaks,
   onStartBreak,
   onEdit,
   onStopSound,
@@ -46,6 +50,8 @@ export function WorkFinishedScreen({
           completedBreaks={completedBreaks}
           startedWork={startedWork}
           startedBreaks={startedBreaks}
+          consecutiveWork={consecutiveWork}
+          consecutiveBreaks={consecutiveBreaks}
           onEdit={onEdit}
         >
           <ActionCluster showStartBreak onStartBreak={onStartBreak} />
