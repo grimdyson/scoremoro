@@ -24,12 +24,12 @@
   --color-divider: #ff4040;
 
   /* Lozenge backgrounds & borders (alpha-blended onto dark) */
-  --color-badge-work-bg: rgba(255, 64, 64, 0.16);
-  --color-badge-work-border: rgba(255, 64, 64, 0.24);
-  --color-badge-break-bg: rgba(136, 217, 255, 0.16);
-  --color-badge-break-border: rgba(136, 217, 255, 0.24);
-  --color-badge-streak-bg: rgba(102, 255, 0, 0.32);
-  --color-badge-streak-border: rgba(102, 255, 0, 0.4);
+  --color-badge-work-bg: rgba(255, 64, 64, 0.32);
+  --color-badge-work-border: rgba(255, 64, 64, 0.48);
+  --color-badge-break-bg: rgba(136, 217, 255, 0.32);
+  --color-badge-break-border: rgba(136, 217, 255, 0.48);
+  --color-badge-streak-bg: rgba(255, 225, 0, 0.32);
+  --color-badge-streak-border: rgba(255, 225, 0, 0.4);
 
   /* Card selection borders */
   --color-card-selected: rgba(255, 255, 255, 0.2);
@@ -95,12 +95,12 @@
   --color-divider: #e02020;
 
   /* Lozenge backgrounds & borders (richer alpha on light) */
-  --color-badge-work-bg: rgba(224, 32, 32, 0.10);
-  --color-badge-work-border: rgba(224, 32, 32, 0.25);
-  --color-badge-break-bg: rgba(33, 150, 214, 0.10);
-  --color-badge-break-border: rgba(33, 150, 214, 0.25);
-  --color-badge-streak-bg: rgba(102, 255, 0, 0.32);
-  --color-badge-streak-border: rgba(102, 255, 0, 0.4);
+  --color-badge-work-bg: rgba(224, 32, 32, 0.20);
+  --color-badge-work-border: rgba(224, 32, 32, 0.65);
+  --color-badge-break-bg: rgba(33, 150, 214, 0.20);
+  --color-badge-break-border: rgba(33, 150, 214, 0.65);
+  --color-badge-streak-bg: rgba(255, 225, 0, 0.32);
+  --color-badge-streak-border: rgba(255, 225, 0, 0.65);
 
   /* Card selection borders */
   --color-card-selected: rgba(0, 0, 0, 0.2);

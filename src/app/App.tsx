@@ -110,6 +110,8 @@ function reducer(state: AppState, action: AppAction): AppState {
           completedBreaks: 0,
           startedWork: 0,
           startedBreaks: 0,
+          consecutiveWork: 0,
+          consecutiveBreaks: 0,
         };
       }
       // Default: adjust work (even if Deselected, auto-select work)
@@ -121,6 +123,8 @@ function reducer(state: AppState, action: AppAction): AppState {
         completedBreaks: 0,
         startedWork: 0,
         startedBreaks: 0,
+        consecutiveWork: 0,
+        consecutiveBreaks: 0,
       };
     }
 
