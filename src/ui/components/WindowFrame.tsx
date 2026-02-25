@@ -23,6 +23,8 @@ interface WindowFrameProps {
   finishTime?: string;
   /** Accent colour for the finish time text */
   finishTimeAccent?: AccentMode;
+  /** Label below the finish time (default: "Finish") */
+  finishLabel?: string;
   children: ReactNode;
 }
 
@@ -33,6 +35,7 @@ export function WindowFrame({
   onToggleTheme,
   finishTime,
   finishTimeAccent,
+  finishLabel = 'Finish',
   children,
 }: WindowFrameProps): ReactNode {
   const handleMinimize = () => {
@@ -56,7 +59,7 @@ export function WindowFrame({
             <span className={`window-frame__finish-value window-frame__finish-value--${finishTimeAccent ?? 'work'}`}>
               {finishTime}
             </span>
-            <span className="window-frame__finish-label">Finish</span>
+            <span className="window-frame__finish-label">{finishLabel}</span>
           </div>
         )}
 

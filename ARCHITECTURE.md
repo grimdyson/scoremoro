@@ -75,15 +75,13 @@ Abstraction layer for OS and shell capabilities. Each capability is defined as a
 
 ```
 src/platform/
-  interfaces.ts
-  windows/
-    windowManager.ts
-    audioPlayer.ts
-    storage.ts
-    themeProvider.ts
-    shortcutManager.ts
-  macos/          ← future
+  interfaces.ts      ← shared capability contracts
+  detect.ts          ← runtime platform detection (renderer-side)
+  index.ts           ← barrel exports
 ```
+
+Platform detection (`detect.ts`) provides `isMacOS()`, `isWindows()`, `isElectron()` helpers
+that the renderer can use for UI adaptations without importing Electron directly.
 
 ---
 
@@ -216,6 +214,30 @@ All component sizing uses `rem`. Changing `--app-font-scale` uniformly resizes e
 
 ## Cross-Platform Strategy
 
-Platform-specific code lives exclusively in `src/platform/`. The app layer imports only the interfaces. A factory function returns the correct implementation based on build target or runtime detection.
+Platform-specific code is split across two locations:
 
-Future macOS support means adding `src/platform/macos/` implementations of each interface. Core and UI remain untouched.
+1. **`electron/main.cjs`** — Main-process platform branching. Detects `process.platform` and
+   configures the window + tray accordingly:
+   - **Windows:** standard always-on-top frameless window, taskbar icon, portable `.exe` output.
+   - **macOS:** menubar-only app (🔥 tray icon via `Tray.setTitle()`), no dock icon
+     (`LSUIElement`), popover window anchored below the tray, hide-on-blur.
+
+2. **`src/platform/`** — Renderer-side abstractions. Interfaces define capabilities
+   (`IWindowManager`, `IAudioPlayer`, etc.). `detect.ts` provides runtime platform
+   detection so the UI can adapt (e.g. control button placement).
+
+Core and UI remain platform-agnostic. All Electron/platform specifics are isolated in
+`electron/` (main process) and `src/platform/` (renderer helpers).
+
+### Build Targets
+
+| Platform | Target | Output | Notes |
+|---|---|---|---|
+| Windows | `portable` | `Scoremoro 0.1.0.exe` | Standard taskbar window |
+| macOS | `dmg` | `Scoremoro-0.1.0.dmg` | Menubar-only, `LSUIElement: true` |
+
+Build commands:
+- `npm run dist:win` — Windows only
+- `npm run dist:mac` — macOS only (requires macOS or CI with macOS runner)
+- `npm run dist:all` — both platforms
+- `npm run dist` — current platform (auto-detected)

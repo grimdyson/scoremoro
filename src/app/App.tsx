@@ -305,6 +305,11 @@ function computeFinishTime(state: AppState): string {
     return formatClock(finish);
   }
 
+  // Finished states: freeze at the moment the timer completed
+  if (isFinished(state.timerState) && state.finishedAtMs > 0) {
+    return formatClock(new Date(state.finishedAtMs));
+  }
+
   return formatClock(new Date());
 }
 
@@ -451,6 +456,7 @@ export function App(): ReactNode {
             onToggleMute={handleMute}
             finishTime={finishTime}
             finishTimeAccent="work"
+            finishLabel="Finished"
             theme={theme}
             onToggleTheme={toggleTheme}
           >
@@ -512,6 +518,7 @@ export function App(): ReactNode {
             onToggleMute={handleMute}
             finishTime={finishTime}
             finishTimeAccent="break"
+            finishLabel="Finished"
             theme={theme}
             onToggleTheme={toggleTheme}
           >

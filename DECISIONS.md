@@ -171,3 +171,39 @@ Exact key bindings TBD during implementation. Registered via `IShortcutManager` 
 - **OQ-3:** Exact keyboard shortcut bindings (keycodes).
 - **OQ-4:** Should the app live in the system tray when idle, or only when timer is running?
 - **OQ-5:** WebView2 audio format support — need to test OGG playback.
+
+---
+
+## D-017: macOS — Menubar-Only App
+
+**[DECIDED]** On macOS, Scoremoro runs as a **menubar (tray) app** with the 🔥 emoji shown in the system menu bar. The dock icon is hidden (`LSUIElement: true`), and the window appears as a popover anchored below the tray icon.
+
+**Behaviour:**
+- Clicking the 🔥 tray item toggles the popover window.
+- Clicking outside the window (blur) hides it.
+- Close / minimize from the UI hides to tray rather than quitting.
+- `Cmd+Q` or explicit quit exits the process.
+- `before-quit` flag (`isQuitting`) lets the close-intercept know when to actually terminate.
+
+**Rationale:** A menubar-only app matches the use case — Scoremoro is a small, always-available utility. Dock presence is unnecessary and adds visual clutter. The fire emoji provides an immediately recognisable, personality-filled menu bar indicator without needing a custom icon asset.
+
+**Implementation:**
+- `Tray` with a 1×1 transparent `nativeImage` + `tray.setTitle('🔥')`.
+- `BrowserWindow` type `panel` for proper layering above other windows.
+- `app.dock.hide()` at launch.
+- `electron-builder` mac config sets `LSUIElement: true` via `extendInfo`.
+
+---
+
+## D-018: Multi-Platform Build Strategy
+
+**[DECIDED]** Ship as a single Electron codebase with platform branching in the main process (`process.platform === 'darwin'`).
+
+**Rationale:** The renderer (React UI) and core timer logic are 100% shared. The only platform differences are in window management and tray behaviour, which live in `electron/main.cjs`. A single codebase avoids duplication and keeps the project easy to maintain.
+
+**Build matrix:**
+| Platform | Target | Command |
+|---|---|---|
+| Windows | `portable` (.exe) | `npm run dist:win` |
+| macOS | `dmg` | `npm run dist:mac` |
+| Both | — | `npm run dist:all` |

@@ -2,6 +2,8 @@
   "name": "scoremoro",
   "private": true,
   "version": "0.1.0",
+  "description": "A focused pomodoro timer for Windows and macOS",
+  "author": "Scoremoro",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "main": "electron/main.cjs",
@@ -14,7 +16,10 @@
     "format": "biome format --write .",
     "test": "vitest",
     "electron": "electron .",
-    "dist": "tsc -b && vite build && electron-builder"
+    "dist": "tsc -b && vite build && electron-builder",
+    "dist:win": "tsc -b && vite build && electron-builder --win",
+    "dist:mac": "tsc -b && vite build && electron-builder --mac",
+    "dist:all": "tsc -b && vite build && electron-builder --win --mac"
   },
   "dependencies": {
     "react": "^19.1.0",
@@ -34,17 +39,33 @@
   "build": {
     "appId": "com.scoremoro.timer",
     "productName": "Scoremoro",
-    "icon": "build/icon.ico",
     "directories": {
       "output": "release"
     },
     "files": [
       "dist/**/*",
       "electron/**/*",
-      "build/icon.ico"
+      "build/**/*"
     ],
     "win": {
+      "icon": "build/icon.ico",
       "target": "portable"
+    },
+    "mac": {
+      "icon": "build/icon.ico",
+      "target": "dmg",
+      "category": "public.app-category.productivity",
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "extendInfo": {
+        "LSUIElement": true
+      }
+    },
+    "dmg": {
+      "contents": [
+        { "x": 130, "y": 220 },
+        { "x": 410, "y": 220, "type": "link", "path": "/Applications" }
+      ]
     }
   }
 }
