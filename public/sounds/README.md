@@ -16,4 +16,4 @@ To change the filename, update the path in `src/app/App.tsx` where `useTimerSoun
 
 | Sound | Author | Source | Licence |
 |-------|--------|--------|---------|
-| Short Elevator Music Loop | BlondPanda | [freesound.org/s/659889](https://freesound.org/s/659889/) | CC0 1.0 |
+| Piano Notification 5a | FoolBoyMedia | [freesound.org/s/352655](https://freesound.org/s/352655/) | Attribution NonCommercial 4.0 |
