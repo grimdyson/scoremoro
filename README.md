@@ -1,10 +1,8 @@
-# Scoremoro
-
-A desktop Pomodoro timer that runs as an always-on-top Picture-in-Picture window.
+# scoremoro
 
 ![](./src/ui/assets/splash.png)
 
-Scoremoro lightly gamifies the traditional Pomodoro with a session scoreboard, rewarding completed cycles to help you stay consistent without pulling you out of flow.
+A desktop pomodoro timer that runs as an always-on-top Picture-in-Picture window. Scoremoro lightly gamifies the traditional Pomodoro with a session scoreboard, rewarding completed cycles to help you stay consistent without pulling you out of flow.
 
 ## Tech Stack
 
@@ -27,7 +25,7 @@ corepack prepare pnpm@latest --activate
 ## Setup
 
 ```sh
-git clone https://github.com/grimdyson/Scoremoro.git
+git clone https://github.com/grimdyson/scoremoro.git
 cd Scoremoro
 pnpm install
 ```
